@@ -4,7 +4,7 @@ import '../css/App.css';
 import '../css/Power.css';
 
 
-function Power({ value, onChange, id, children, formErrors }) {
+function Power({ value, onChange, id, children, isValid }) {
   return(
     <div className='power-component text-centered'>
       <label>
@@ -17,7 +17,7 @@ function Power({ value, onChange, id, children, formErrors }) {
       	</div>
       </div>
       <div>
-        <FormErrors formErrors={formErrors} id={id}/>
+        <FormErrors isValid={isValid}/>
       </div>
     </div>
   )
