@@ -1,0 +1,20 @@
+label {
+	display: block;
+	margin-bottom: 1rem;
+}
+
+div.input-group {
+	min-width: 200px;
+}
+
+span.input-group-text {
+	font-size: 15px;
+}
+
+input[type='text'] {
+	font-size: 20px;
+}
+
+.power-component {
+	margin-bottom: 10rem;
+}

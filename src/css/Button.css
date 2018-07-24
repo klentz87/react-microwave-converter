@@ -1,0 +1,4 @@
+button.btn {
+    display: block; /* change this from inline-block */
+    margin: 10px auto; 
+}

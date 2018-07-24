@@ -1,0 +1,13 @@
+h1 {
+	font-size: 5rem;
+	font-weight: bold ;
+}
+
+.title-component a {
+	color: blue!important;
+}
+
+.title-component {
+	padding-bottom: 4rem;
+	margin-top: 2rem;
+}
