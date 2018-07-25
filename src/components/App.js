@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
-import TimeFormat from 'hh-mm-ss'; // possible uninstall
 import Button from './Button.js';
 import Display from './Display.js';
 import Power from './Power.js';
 import Time from './Time.js';
 import Title from './Title.js';
-import FormErrors from './FormErrors.js';
 
-const convertToSeconds = require('../utils/convertToSeconds.js').convertToSeconds
-// uninstall react-time-input
+const converter = require('../utils/converter.js').converter
+const convertToSeconds = require('../utils/convertToSeconds').convertToSeconds
+const convertSecondsToTimeFormat = require ('../utils/convertSecondsToTimeFormat').convertSecondsToTimeFormat
 
 class App extends Component {
   constructor() {
@@ -19,7 +18,10 @@ class App extends Component {
       yourPower: '',
       minutes: '',
       seconds: '',
-      display: '',
+      displayResult: '',
+      displayOriginalPower: '',
+      displayYourPower: '',
+      displayPackageTime: '',
       originalPowerValid: true,
       yourPowerValid: true,
       minutesValid: true,
@@ -41,9 +43,20 @@ class App extends Component {
 
 
   handleSubmit(event) {
-    this.setState({
-      display: convertToSeconds(this.state.minutes, this.state.seconds)
-    }) 
+    const value = converter(this.state.originalPower, this.state.yourPower, this.state.minutes, this.state.seconds)  
+    const element = document.getElementById("display-id")
+      this.setState({
+        displayResult: convertSecondsToTimeFormat(value),
+        displayOriginalPower: this.state.originalPower,
+        displayYourPower: this.state.yourPower,
+        displayPackageTime: convertSecondsToTimeFormat(convertToSeconds(this.state.minutes, this.state.seconds)),
+        originalPower: '',
+        yourPower: '',
+        minutes: '',
+        seconds: '',
+        formValid: false
+      }, () => {element.scrollIntoView()}) 
+
     event.preventDefault();
   }
 
@@ -58,7 +71,13 @@ class App extends Component {
   }
 
   validateForm() {
-    this.setState({formValid: this.state.originalPowerValid && this.state.yourPowerValid && this.state.minutesValid && this.state.secondsValid});
+    this.setState({formValid: this.state.originalPowerValid 
+                           && this.state.yourPowerValid 
+                           && this.state.minutesValid 
+                           && this.state.secondsValid
+                           && this.state.yourPower !== ''
+                           && this.state.originalPower !== ''
+                           && (this.state.minutes !== '' || this.state.seconds !== '')});
   }
 
 
@@ -66,43 +85,63 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="container center">
-          <Title />
-
-          <Power 
-            value={this.state.originalPower}
-            onChange={this.handleChange}
-            id='originalPower'
-            isValid={this.state.originalPowerValid}
-          >
-              What wattage is specified on the back of the package?
-          </Power>
+        <div className="app container center">
           
-          <Power 
-            value={this.state.yourPower}
-            onChange={this.handleChange}
-            id='yourPower'
-            isValid={this.state.yourPowerValid}
-          >
-            What is the wattage of your microwave?
-          </Power>
+          <div className='title-component'>          
+            <Title />
+          </div>  
 
-          <Time
-            minutes={this.state.minutes}
-            seconds={this.state.seconds}
-            onChange={this.handleChange}
-            formErrors={this.state.formErrors}
-            isSecondsValid={this.state.minutesValid}
-            isMinutesValid={this.state.secondsValid}
-          />  
-          <Button 
-            onSubmit={this.handleSubmit}
-            isDisabled={this.state.formValid}
-          />  
+          <div className='original-power-component'>
+            <h2 className='section-header'>On the package</h2>
+            <Power 
+              value={this.state.originalPower}
+              onChange={this.handleChange}
+              id='originalPower'
+              isValid={this.state.originalPowerValid}
+            >
+                What wattage is specified on the back of the package?
+            </Power>
+          </div>  
 
-          <Display 
-            value={this.state.display}
-          /> 
+          <div className='time-component'>  
+            <Time
+              minutes={this.state.minutes}
+              seconds={this.state.seconds}
+              onChange={this.handleChange}
+              formErrors={this.state.formErrors}
+              isSecondsValid={this.state.minutesValid}
+              isMinutesValid={this.state.secondsValid}
+            />  
+          </div>  
+          
+          <div className='your-microwave-component'>  
+            <h2 className='section-header'>Your microwave</h2>
+            <Power 
+              value={this.state.yourPower}
+              onChange={this.handleChange}
+              id='yourPower'
+              isValid={this.state.yourPowerValid}
+            >
+              What is the wattage of your microwave?
+            </Power>
+          </div>  
+
+          <div className='button-component'>
+            <Button 
+              onSubmit={this.handleSubmit}
+              isDisabled={this.state.formValid}
+            />  
+          </div>
+            
+          <div className='display-component' id='display-id'>
+            <Display 
+              packageTime={this.state.displayPackageTime}
+              yourPower={this.state.displayYourPower}
+              originalPower={this.state.displayOriginalPower}
+              resultTime={this.state.displayResult}
+            />
+          </div>  
+
         </div>
       </div>  
     )      

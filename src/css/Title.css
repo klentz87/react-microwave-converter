@@ -3,11 +3,18 @@ h1 {
 	font-weight: bold ;
 }
 
-.title-component a {
+.title-div a {
 	color: blue!important;
 }
 
-.title-component {
-	padding-bottom: 4rem;
+.title-div {
+	padding-bottom: 1.5rem;
 	margin-top: 2rem;
+}
+
+@media (max-width: 480px) {
+	.title-div {
+		text-align: center;
+	}
+
 }

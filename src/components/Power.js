@@ -5,8 +5,9 @@ import '../css/Power.css';
 
 
 function Power({ value, onChange, id, children, isValid }) {
+  
   return(
-    <div className='power-component text-centered'>
+    <div className='text-centered'>
       <label>
         <h3>{children}</h3>
       </label>  

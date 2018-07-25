@@ -1,0 +1,7 @@
+.formErrors {
+	margin-top: 1rem;
+}
+
+.formErrors p {
+	color: #ff0033;
+}

@@ -14,3 +14,24 @@ h3 {
     margin: auto;
     width: 50%;
 }
+
+.section-header {
+	text-align: center;
+	font-size: 4rem;
+	font-style: bold;
+	margin-bottom: 2.5rem;
+}
+
+.your-microwave-component {
+	margin-top: 7rem;
+}
+
+.display-component {
+	margin-top: 2rem;
+}
+
+@media (max-width: 480px) {
+	.app.container {
+		width: 100%;
+	}
+}
