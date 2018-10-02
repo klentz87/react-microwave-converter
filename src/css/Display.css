@@ -1,7 +1,23 @@
+h2 {
+	font-size: 1.5rem;
+}
+
 .display {
 	padding: 2rem 3rem;
 	margin: auto;
 	width: 100%;
 	border-radius: 12px;
 	background-color: #F8F8F8;
+}
+
+.br-on-mobile {
+	display: none;
+}
+
+@media (max-width: 575px) {
+	.br-on-mobile {
+		display: inline;
+	}
+
+
 }

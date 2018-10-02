@@ -17,7 +17,7 @@ function Time({ minutes, seconds, onChange, isMinutesValid, isSecondsValid }) {
 
   return(
  	<div className='time-div'>
-      <label className='center'><h3>Enter time specified on back of package</h3></label>
+      <label className='text-centered'><h3>Enter time specified on back of package</h3></label>
 	      <div className='container'>
 	      	<div className='row'>
 		      <div className="input-group time-input center col-xs-3">  
@@ -33,7 +33,7 @@ function Time({ minutes, seconds, onChange, isMinutesValid, isSecondsValid }) {
 		      	</div>
 		      </div> 
 		    </div>
-		    		      <FormErrors isValid={isValid} />	
+		    <FormErrors isValid={isValid} />	
   
 		  </div>  
     </div>

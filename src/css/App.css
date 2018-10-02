@@ -1,10 +1,13 @@
 body {
-	font-size: 1.6rem;
+	height: 100%;
+	background-color: #4158D0;
+	background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
 }
 
 h3 {
 	font-weight: bold;
 }
+
 
 .text-centered {
 	text-align: center;
@@ -15,23 +18,40 @@ h3 {
     width: 50%;
 }
 
+.app {
+	margin-top: 3rem;
+	margin-bottom: 2.5rem;
+}
+
 .section-header {
 	text-align: center;
-	font-size: 4rem;
+	font-size: 2.5rem;
 	font-style: bold;
 	margin-bottom: 2.5rem;
 }
 
 .your-microwave-component {
-	margin-top: 7rem;
+	margin-top: 5rem;
 }
 
 .display-component {
 	margin-top: 2rem;
 }
 
-@media (max-width: 480px) {
+.title-component {
+		padding-right: 2.3rem;
+	padding-left: 2.3rem;
+}
+
+@media (max-width: 691px) {
 	.app.container {
 		width: 100%;
+	}
+}
+
+@media (max-width: 575px) {
+	.app {
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 }

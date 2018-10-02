@@ -6,6 +6,11 @@ input {
 	margin-top: 3rem;
 }
 
+.time-label h3 {
+	margin: 0 auto;
+
+}
+
 .time-input {
 	max-width: 1rem;
 	margin-top: 1rem;

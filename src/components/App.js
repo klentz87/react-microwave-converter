@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import Button from './Button.js';
 import Display from './Display.js';
 import Power from './Power.js';
 import Time from './Time.js';
 import Title from './Title.js';
+import NavigationBar from './NavigationBar';
+import { Card } from 'reactstrap';
 
 const converter = require('../utils/converter.js').converter
 const convertToSeconds = require('../utils/convertToSeconds').convertToSeconds
@@ -84,65 +85,66 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <div className="app container center">
-          
-          <div className='title-component'>          
-            <Title />
-          </div>  
+      <div className="body">
+        <NavigationBar />
+          <Card className="app container center">
 
-          <div className='original-power-component'>
-            <h2 className='section-header'>On the package</h2>
-            <Power 
-              value={this.state.originalPower}
-              onChange={this.handleChange}
-              id='originalPower'
-              isValid={this.state.originalPowerValid}
-            >
-                What wattage is specified on the back of the package?
-            </Power>
-          </div>  
+            <div className='title-component'>          
+              <Title />
+            </div>  
 
-          <div className='time-component'>  
-            <Time
-              minutes={this.state.minutes}
-              seconds={this.state.seconds}
-              onChange={this.handleChange}
-              formErrors={this.state.formErrors}
-              isSecondsValid={this.state.minutesValid}
-              isMinutesValid={this.state.secondsValid}
-            />  
-          </div>  
-          
-          <div className='your-microwave-component'>  
-            <h2 className='section-header'>Your microwave</h2>
-            <Power 
-              value={this.state.yourPower}
-              onChange={this.handleChange}
-              id='yourPower'
-              isValid={this.state.yourPowerValid}
-            >
-              What is the wattage of your microwave?
-            </Power>
-          </div>  
+            <div className='original-power-component'>
+              <h2 className='section-header'>On the package</h2>
+              <Power 
+                value={this.state.originalPower}
+                onChange={this.handleChange}
+                id='originalPower'
+                isValid={this.state.originalPowerValid}
+              >
+                  What wattage is specified on the back of the package?
+              </Power>
+            </div>  
 
-          <div className='button-component'>
-            <Button 
-              onSubmit={this.handleSubmit}
-              isDisabled={this.state.formValid}
-            />  
-          </div>
+            <div className='time-component'>  
+              <Time
+                minutes={this.state.minutes}
+                seconds={this.state.seconds}
+                onChange={this.handleChange}
+                formErrors={this.state.formErrors}
+                isSecondsValid={this.state.minutesValid}
+                isMinutesValid={this.state.secondsValid}
+              />  
+            </div>  
             
-          <div className='display-component' id='display-id'>
-            <Display 
-              packageTime={this.state.displayPackageTime}
-              yourPower={this.state.displayYourPower}
-              originalPower={this.state.displayOriginalPower}
-              resultTime={this.state.displayResult}
-            />
-          </div>  
+            <div className='your-microwave-component'>  
+              <h2 className='section-header'>Your microwave</h2>
+              <Power 
+                value={this.state.yourPower}
+                onChange={this.handleChange}
+                id='yourPower'
+                isValid={this.state.yourPowerValid}
+              >
+                What is the wattage of your microwave?
+              </Power>
+            </div>  
 
-        </div>
+            <div className='button-component'>
+              <Button 
+                onSubmit={this.handleSubmit}
+                isDisabled={this.state.formValid}
+              />  
+            </div>
+              
+            <div className='display-component' id='display-id'>
+              <Display 
+                packageTime={this.state.displayPackageTime}
+                yourPower={this.state.displayYourPower}
+                originalPower={this.state.displayOriginalPower}
+                resultTime={this.state.displayResult}
+              />
+            </div>  
+
+          </Card>
       </div>  
     )      
   }
