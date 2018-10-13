@@ -19,15 +19,19 @@ class App extends Component {
       yourPower: '',
       minutes: '',
       seconds: '',
-      displayResult: '',
-      displayOriginalPower: '',
-      displayYourPower: '',
-      displayPackageTime: '',
-      originalPowerValid: true,
-      yourPowerValid: true,
-      minutesValid: true,
-      secondsValid: true, 
-      formValid: false
+      display: {
+              result: '',
+              originalPower: '',
+              yourPower: '',
+              packageTime: ''
+      },       
+      individualValidations: {
+              originalPower: true,
+              yourPower: true,
+              minutes: true,
+              seconds: true,
+      },
+      formValid: true
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,50 +40,60 @@ class App extends Component {
   handleChange(event) {
     const id = event.target.id;
     const value = event.target.value;
-    const toValidate = event.target.id + 'Valid'
 
     this.setState({[id]: value},
-                  () => { this.validateField([toValidate], value) });
+                  () => { this.validateField([id], value) });
   }
 
 
   handleSubmit(event) {
     const value = converter(this.state.originalPower, this.state.yourPower, this.state.minutes, this.state.seconds)  
-    const element = document.getElementById("display-id")
-      this.setState({
-        displayResult: convertSecondsToTimeFormat(value),
-        displayOriginalPower: this.state.originalPower,
-        displayYourPower: this.state.yourPower,
-        displayPackageTime: convertSecondsToTimeFormat(convertToSeconds(this.state.minutes, this.state.seconds)),
-        originalPower: '',
-        yourPower: '',
-        minutes: '',
-        seconds: '',
-        formValid: false
-      }, () => {element.scrollIntoView()}) 
+    const element = document.getElementById("display-id");
 
+    let display = {...this.state.display};
+    display.result = convertSecondsToTimeFormat(value);
+    display.originalPower = this.state.originalPower;
+    display.yourPower = this.state.yourPower;
+    display.packageTime = convertSecondsToTimeFormat(convertToSeconds(this.state.minutes, this.state.seconds));
+
+    this.setState({
+      display,
+      originalPower: '',
+      yourPower: '',
+      minutes: '',
+      seconds: '',
+      formValid: false
+    }, () => {element.scrollIntoView()})
+    
     event.preventDefault();
   }
 
   validateField(name, value) {   
+      
+      let individualValidations = {...this.state.individualValidations};
+
       if (value.match(/^(\s*|\d+)$/)) {
-          this.setState({ [name]: true
+          individualValidations[name] = true
+          this.setState({ individualValidations
         }, this.validateForm);  
       } else {
-          this.setState({ [name]: false},
+          individualValidations[name] = false
+          this.setState({ individualValidations },
            this.validateForm);
       }
   }
 
   validateForm() {
-    this.setState({formValid: this.state.originalPowerValid 
-                           && this.state.yourPowerValid 
-                           && this.state.minutesValid 
-                           && this.state.secondsValid
+    this.setState({formValid: this.state.individualValidations.originalPower 
+                           && this.state.individualValidations.yourPower
+                           && this.state.individualValidations.minutes
+                           && this.state.individualValidations.seconds
                            && this.state.yourPower !== ''
                            && this.state.originalPower !== ''
                            && (this.state.minutes !== '' || this.state.seconds !== '')});
   }
+
+
 
 
 
@@ -99,7 +113,7 @@ class App extends Component {
                 value={this.state.originalPower}
                 onChange={this.handleChange}
                 id='originalPower'
-                isValid={this.state.originalPowerValid}
+                isValid={this.state.individualValidations.originalPower}
               >
                   What wattage is specified on the back of the package?
               </Power>
@@ -110,9 +124,8 @@ class App extends Component {
                 minutes={this.state.minutes}
                 seconds={this.state.seconds}
                 onChange={this.handleChange}
-                formErrors={this.state.formErrors}
-                isSecondsValid={this.state.minutesValid}
-                isMinutesValid={this.state.secondsValid}
+                isSecondsValid={this.state.individualValidations.minutes}
+                isMinutesValid={this.state.individualValidations.seconds}
               />  
             </div>  
             
@@ -122,7 +135,7 @@ class App extends Component {
                 value={this.state.yourPower}
                 onChange={this.handleChange}
                 id='yourPower'
-                isValid={this.state.yourPowerValid}
+                isValid={this.state.individualValidations.yourPower}
               >
                 What is the wattage of your microwave?
               </Power>
@@ -137,10 +150,7 @@ class App extends Component {
               
             <div className='display-component' id='display-id'>
               <Display 
-                packageTime={this.state.displayPackageTime}
-                yourPower={this.state.displayYourPower}
-                originalPower={this.state.displayOriginalPower}
-                resultTime={this.state.displayResult}
+                display={this.state.display}
               />
             </div>  
 
