@@ -2,6 +2,7 @@ import React from 'react';
 import FormErrors from './FormErrors'
 import '../css/App.css';
 import '../css/Time.css';
+import PropTypes from "prop-types";
 
 function Time({ minutes, seconds, onChange, isMinutesValid, isSecondsValid }) {
   
@@ -12,8 +13,6 @@ function Time({ minutes, seconds, onChange, isMinutesValid, isSecondsValid }) {
   } else {
   	isValid = false
   }
-
-
 
   return(
  	<div className='time-div'>
@@ -38,6 +37,14 @@ function Time({ minutes, seconds, onChange, isMinutesValid, isSecondsValid }) {
 		  </div>  
     </div>
   )
+}
+
+Time.propTypes = {
+	minutes: PropTypes.string,
+	seconds: PropTypes.string,
+	onChange: PropTypes.func.isRequired,
+	isMinutesValid: PropTypes.bool.isRequired,
+	isSecondsValid: PropTypes.bool.isRequired
 }
 
 export default Time;

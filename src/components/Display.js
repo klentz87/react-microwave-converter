@@ -1,11 +1,7 @@
 import React from 'react';
 import '../css/Display.css';
 import '../css/App.css';
-
-/*
-const convertToSeconds = require('../utils/convertToSeconds').convertToSeconds
-const convertSecondsToTimeFormat = require ('../utils/convertSecondsToTimeFormat').convertSecondsToTimeFormat
-*/
+import PropTypes from "prop-types";
 
 function Display ({ display }) {
 
@@ -35,6 +31,10 @@ function Display ({ display }) {
 		</div>	
 	  </div>
 	)
+}
+
+Display.propTypes = {
+	display: PropTypes.object.isRequired
 }
 
 export default Display;

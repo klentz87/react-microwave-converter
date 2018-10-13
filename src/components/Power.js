@@ -2,6 +2,7 @@ import React from 'react';
 import FormErrors from './FormErrors'
 import '../css/App.css';
 import '../css/Power.css';
+import PropTypes from "prop-types";
 
 
 function Power({ value, onChange, id, children, isValid }) {
@@ -22,6 +23,14 @@ function Power({ value, onChange, id, children, isValid }) {
       </div>
     </div>
   )
+}
+
+Power.propTypes = {
+  children: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  isValid: PropTypes.bool.isRequired
 }
 
 export default Power;
