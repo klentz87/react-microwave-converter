@@ -104,61 +104,62 @@ class App extends Component {
     return (
         <div>
           <div id="intro">         
-            <View>
-              
-              <BrowserRouter>
+            <View>              
+              <Mask className="text-white gradient">
+
                 <NavigationBar />
-              </BrowserRouter>
-              
-              <Mask className="text-white d-flex gradient">
-                <Container className="content">   
-              
-                  <Title />  
+                
+                <div className="d-flex">
+   
+                  <Container className="content">   
+                
+                    <Title />  
 
-                  <Row className="mt-5 white-text">
+                    <Row className="mt-5 white-text">
 
-                    <Col md="7" xs="12">
-                      <Power 
-                        value={this.state.originalPower}
-                        onChange={this.handleChange}
-                        id='originalPower'
-                        isValid={this.state.individualValidations.originalPower}
-                        className="mt-3"
-                      >
-                        What wattage is specified on the back of the package?
-                      </Power>
+                      <Col md="7" xs="12">
+                        <Power 
+                          value={this.state.originalPower}
+                          onChange={this.handleChange}
+                          id='originalPower'
+                          isValid={this.state.individualValidations.originalPower}
+                          className="mt-3"
+                        >
+                          What wattage is specified on the back of the package?
+                        </Power>
 
-                      <Time
-                        minutes={this.state.minutes}
-                        seconds={this.state.seconds}
-                        onChange={this.handleChange}
-                        isSecondsValid={this.state.individualValidations.minutes}
-                        isMinutesValid={this.state.individualValidations.seconds}
-                        className="mb-3"
-                      />  
-                    
-                      <Power 
-                        value={this.state.yourPower}
-                        onChange={this.handleChange}
-                        id='yourPower'
-                        isValid={this.state.individualValidations.yourPower}
-                      >
-                        What is the wattage of your microwave?
-                      </Power>
-                    
-                      <Button 
-                        onSubmit={this.handleSubmit}
-                        isDisabled={this.state.formValid}
-                      />  
-                    </Col>
+                        <Time
+                          minutes={this.state.minutes}
+                          seconds={this.state.seconds}
+                          onChange={this.handleChange}
+                          isSecondsValid={this.state.individualValidations.minutes}
+                          isMinutesValid={this.state.individualValidations.seconds}
+                          className="mb-3"
+                        />  
+                      
+                        <Power 
+                          value={this.state.yourPower}
+                          onChange={this.handleChange}
+                          id='yourPower'
+                          isValid={this.state.individualValidations.yourPower}
+                        >
+                          What is the wattage of your microwave?
+                        </Power>
+                      
+                        <Button 
+                          onSubmit={this.handleSubmit}
+                          isDisabled={this.state.formValid}
+                        />  
+                      </Col>
 
-                    <Col md="5" xs="12">
-                      <Display 
-                        display={this.state.display}
-                      />
-                    </Col>
-                  </Row>  
-                </Container>    
+                      <Col md="5" xs="12">
+                        <Display 
+                          display={this.state.display}
+                        />
+                      </Col>
+                    </Row>  
+                  </Container>  
+                </div>  
               </Mask>
 
             </View>

@@ -26,10 +26,7 @@ class Title extends React.Component {
           <Collapse isOpen={this.state.collapse}>
             <div>
               <p>
-                The cooking times for microwavable foods are for specific microwave wattages. Use this application to find out the correct cooking time for your own microwave.
-              </p>  
-              <p>
-                The power of most microwaves is between 600 and 1200 watts.
+                The cooking times for microwavable foods are for specific microwave wattages. Use this application to find out the correct cooking time for your own microwave. The power of most microwaves is between 600 and 1200 watts.
               </p>
             </div>
           </Collapse>

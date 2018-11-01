@@ -1,11 +1,16 @@
+.display {
+	margin-left: 3rem;
+}
+
 .br-on-mobile {
 	display: none;
 }
 
-@media (max-width: 575px) {
-	.br-on-mobile {
-		display: inline;
-	}
+@media (max-width: 768px) {
 
+	.display {
+		margin-left: 0rem;
+		margin-top: 3rem;
+	}
 
 }

@@ -10,7 +10,7 @@ function FooterPage() {
 		      <Col md="6">
 		      	<h5 className="title">Footer Content</h5>
 		      	<p>
-		        	Here you can use rows and columns here to organize your footer content.
+		        	For more information about other project I've done, check out the following links.
 		      	</p>
 		      </Col>
 		      
@@ -32,10 +32,10 @@ function FooterPage() {
 		      	<h5 className="title">Links</h5>
 		      	<ul className="pl-0">
 	            	<li className="list-unstyled">
-	            		<a href="#">LinkedIn</a>
+	            		<a href="https://www.linkedin.com/in/kris-lentz/">LinkedIn</a>
 		        	</li>
 		        	<li className="list-unstyled">
-						<a href="#">Github Profile</a>	          		
+						<a href="https://github.com/klentz87">Github Profile</a>	          		
 		        	</li>
 		      	</ul>
 		      </Col>

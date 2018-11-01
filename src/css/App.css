@@ -3,7 +3,7 @@ label {
 }
 
 .content {
-  margin-top: 10rem;
+  margin-top: 8rem;
 }
 
 #intro .view {
@@ -21,8 +21,21 @@ label {
   background: linear-gradient(to 45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
 }
 
-@media (max-width: 768px) {
-  #intro {
+@media and (min-width: 577px) and (max-width: 768px) {
+  .content {
+    margin-top: 3rem;
+  }
 
+
+  #intro .view {
+    min-height: 153vh;
+  }
+}
+
+@media and screen and (max-width: 576px) {
+
+
+  #intro .view {
+    min-height: 185vh;
   }
 }

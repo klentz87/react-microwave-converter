@@ -1,6 +1,5 @@
 import React from 'react';
 import '../css/Display.css';
-//import '../css/App.css';
 import PropTypes from "prop-types";
 
 function Display ({ display }) {
