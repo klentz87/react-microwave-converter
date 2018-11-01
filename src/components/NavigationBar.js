@@ -7,7 +7,7 @@ import {
   Nav,
   NavItem,
   NavLink,
-} from 'reactstrap'; 
+} from 'mdbreact'; 
  import "../css/NavigationBar.css";
 
 class NavigationBar extends React.Component {
@@ -27,18 +27,18 @@ class NavigationBar extends React.Component {
 	}
 
 	render() {
-		return(
-			<div>
+		return (
+			<div className="navigation-bar">
 				<Navbar light expand="md">
-					<NavbarBrand className="brand" style={{cursor:"default"}}>React Microwave Project</NavbarBrand>
+					<NavbarBrand className="brand" style={{cursor:"default"}}>Microwave Converter</NavbarBrand>
 					<NavbarToggler onClick={this.toggle} />
 					<Collapse isOpen={this.state.isOpen} navbar>
 						<Nav className="ml-auto" navbar>
 							<NavItem>
-								<NavLink href="http://www.krislentz.net">Portfolio Page</NavLink>
+								<NavLink to="http://www.krislentz.net">Portfolio Page</NavLink>
 							</NavItem>
 							<NavItem>
-								<NavLink href="https://github.com/klentz87">Github Profile</NavLink>
+								<NavLink to="https://github.com/klentz87">Github Profile</NavLink>
 							</NavItem>
 						</Nav>
 					</Collapse>

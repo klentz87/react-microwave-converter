@@ -1,28 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import FormErrors from './FormErrors'
-import '../css/App.css';
-import '../css/Power.css';
 import PropTypes from "prop-types";
 
 
-function Power({ value, onChange, id, children, isValid }) {
-  
-  return(
-    <div className='text-centered'>
-      <label>
-        <h3>{children}</h3>
-      </label>  
-      <div className="input-group center">  
-      	<input type='text' className='form-control' id={id} value={value} onChange={onChange}></input>
-        <div className="input-group-append">
-			    <span className="input-group-text" id="basic-addon2">watts</span>
-      	</div>
-      </div>
+class Power extends Component {
+  render() {
+    const { value, onChange, id, children, isValid } = this.props;
+//  let header;
+
+//  (id == "originalPower") ? header = "On the Package" : header = "Your Microwave" 
+
+    return (
+
       <div>
-        <FormErrors isValid={isValid}/>
+{/*       <h5>{header}</h5>   */}
+        <label>
+          {children}
+        </label>  
+        <div className="input-group col-md-5 px-0">  
+        	<input type='text' className='form-control' id={id} value={value} onChange={onChange}></input>
+          <div className="input-group-append">
+  			    <span className="input-group-text" id="basic-addon2">watts</span>
+        	</div>
+        </div>
+        <div>
+          <FormErrors isValid={isValid}/>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 Power.propTypes = {

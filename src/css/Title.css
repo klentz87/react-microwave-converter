@@ -8,13 +8,9 @@ h3 {
 }
 
 .title-div a {
+
 	color: blue!important;
 	font-size: 1.25rem;
-}
-
-.title-div {
-	padding-bottom: 1.5rem;
-	margin-top: 2rem;
 }
 
 @media (max-width: 480px) {

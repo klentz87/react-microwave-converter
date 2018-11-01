@@ -1,8 +1,9 @@
 import React from 'react';
 import FormErrors from './FormErrors'
-import '../css/App.css';
-import '../css/Time.css';
+//import '../css/App.css';
+//import '../css/Time.css';
 import PropTypes from "prop-types";
+import { Row } from "mdbreact"
 
 function Time({ minutes, seconds, onChange, isMinutesValid, isSecondsValid }) {
   
@@ -15,23 +16,24 @@ function Time({ minutes, seconds, onChange, isMinutesValid, isSecondsValid }) {
   }
 
   return(
- 	<div className='time-div'>
-      <label className='text-centered'><h3>Enter time specified on back of package</h3></label>
-	      <div className='container'>
-	      	<div className='row'>
-		      <div className="input-group time-input center col-xs-3">  
+ 	<div>
+      <label>Enter time specified on back of package</label>
+	      <div>
+	      	<Row>
+		      <div className="input-group col-sm-6 mb-2">  
 		      	<input id="minutes" type="text" onChange={onChange} value={minutes} className="form-control"></input>
 		      	<div className="input-group-append">
 					<span className="input-group-text" id="basic-addon2">minutes</span>
 		      	</div>
 		      </div>
-		      <div className="input-group time-input center col-xs-3">  
+
+		      <div className="input-group col-sm-6 mb-2">  
 		      	<input id="seconds" type="text" onChange={onChange} value={seconds} className="form-control"></input>
 		      	<div className="input-group-append">
 					<span className="input-group-text" id="basic-addon2">seconds</span>
 		      	</div>
 		      </div> 
-		    </div>
+		    </Row>
 		    <FormErrors isValid={isValid} />	
   
 		  </div>  

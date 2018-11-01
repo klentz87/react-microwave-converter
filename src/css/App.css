@@ -1,57 +1,28 @@
-body {
-	height: 100%;
-	background-color: #4158D0;
-	background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+label {
+  font-size: 1.2rem;
 }
 
-h3 {
-	font-weight: bold;
+.content {
+  margin-top: 10rem;
+}
+
+#intro .view {
+  background-image: url('../images/microwave_oven.jpeg');
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: center center;
+  min-height: 115vh;
 }
 
 
-.text-centered {
-	text-align: center;
+#intro .gradient {
+  background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+  background: -webkit-gradient(linear, 45deg, from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%));
+  background: linear-gradient(to 45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
 }
 
-.center {
-    margin: auto;
-    width: 50%;
-}
+@media (max-width: 768px) {
+  #intro {
 
-.app {
-	margin-top: 3rem;
-	margin-bottom: 2.5rem;
-}
-
-.section-header {
-	text-align: center;
-	font-size: 2.5rem;
-	font-style: bold;
-	margin-bottom: 2.5rem;
-}
-
-.your-microwave-component {
-	margin-top: 5rem;
-}
-
-.display-component {
-	margin-top: 2rem;
-}
-
-.title-component {
-		padding-right: 2.3rem;
-	padding-left: 2.3rem;
-}
-
-@media (max-width: 691px) {
-	.app.container {
-		width: 100%;
-	}
-}
-
-@media (max-width: 575px) {
-	.app {
-		margin-top: 0;
-		margin-bottom: 0;
-	}
+  }
 }

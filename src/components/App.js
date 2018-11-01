@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import { BrowserRouter } from "react-router-dom";
+import "../css/App.css"
 import Button from './Button.js';
 import Display from './Display.js';
 import Power from './Power.js';
 import Time from './Time.js';
 import Title from './Title.js';
 import NavigationBar from './NavigationBar';
-import { Card } from 'reactstrap';
+import FooterPage from "./FooterPage";
+import { Container } from 'mdbreact';
+import { Mask, Row, Col, View } from "mdbreact";
 
 const converter = require('../utils/converter.js').converter
 const convertToSeconds = require('../utils/convertToSeconds').convertToSeconds
@@ -48,7 +52,6 @@ class App extends Component {
 
   handleSubmit(event) {
     const value = converter(this.state.originalPower, this.state.yourPower, this.state.minutes, this.state.seconds)  
-    const element = document.getElementById("display-id");
 
     let display = {...this.state.display};
     display.result = convertSecondsToTimeFormat(value);
@@ -63,7 +66,7 @@ class App extends Component {
       minutes: '',
       seconds: '',
       formValid: false
-    }, () => {element.scrollIntoView()})
+    })
     
     event.preventDefault();
   }
@@ -99,63 +102,71 @@ class App extends Component {
 
   render() {
     return (
-      <div className="body">
-        <NavigationBar />
-          <Card className="app container center">
-
-            <div className='title-component'>          
-              <Title />
-            </div>  
-
-            <div className='original-power-component'>
-              <h2 className='section-header'>On the package</h2>
-              <Power 
-                value={this.state.originalPower}
-                onChange={this.handleChange}
-                id='originalPower'
-                isValid={this.state.individualValidations.originalPower}
-              >
-                  What wattage is specified on the back of the package?
-              </Power>
-            </div>  
-
-            <div className='time-component'>  
-              <Time
-                minutes={this.state.minutes}
-                seconds={this.state.seconds}
-                onChange={this.handleChange}
-                isSecondsValid={this.state.individualValidations.minutes}
-                isMinutesValid={this.state.individualValidations.seconds}
-              />  
-            </div>  
-            
-            <div className='your-microwave-component'>  
-              <h2 className='section-header'>Your microwave</h2>
-              <Power 
-                value={this.state.yourPower}
-                onChange={this.handleChange}
-                id='yourPower'
-                isValid={this.state.individualValidations.yourPower}
-              >
-                What is the wattage of your microwave?
-              </Power>
-            </div>  
-
-            <div className='button-component'>
-              <Button 
-                onSubmit={this.handleSubmit}
-                isDisabled={this.state.formValid}
-              />  
-            </div>
+        <div>
+          <div id="intro">         
+            <View>
               
-            <div className='display-component' id='display-id'>
-              <Display 
-                display={this.state.display}
-              />
-            </div>  
+              <BrowserRouter>
+                <NavigationBar />
+              </BrowserRouter>
+              
+              <Mask className="text-white d-flex gradient">
+                <Container className="content">   
+              
+                  <Title />  
 
-          </Card>
-      </div>  
+                  <Row className="mt-5 white-text">
+
+                    <Col md="7" xs="12">
+                      <Power 
+                        value={this.state.originalPower}
+                        onChange={this.handleChange}
+                        id='originalPower'
+                        isValid={this.state.individualValidations.originalPower}
+                        className="mt-3"
+                      >
+                        What wattage is specified on the back of the package?
+                      </Power>
+
+                      <Time
+                        minutes={this.state.minutes}
+                        seconds={this.state.seconds}
+                        onChange={this.handleChange}
+                        isSecondsValid={this.state.individualValidations.minutes}
+                        isMinutesValid={this.state.individualValidations.seconds}
+                        className="mb-3"
+                      />  
+                    
+                      <Power 
+                        value={this.state.yourPower}
+                        onChange={this.handleChange}
+                        id='yourPower'
+                        isValid={this.state.individualValidations.yourPower}
+                      >
+                        What is the wattage of your microwave?
+                      </Power>
+                    
+                      <Button 
+                        onSubmit={this.handleSubmit}
+                        isDisabled={this.state.formValid}
+                      />  
+                    </Col>
+
+                    <Col md="5" xs="12">
+                      <Display 
+                        display={this.state.display}
+                      />
+                    </Col>
+                  </Row>  
+                </Container>    
+              </Mask>
+
+            </View>
+          </div>
+
+          <FooterPage/>
+          
+        </div>  
     )      
   }
 }

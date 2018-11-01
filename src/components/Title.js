@@ -19,7 +19,7 @@ class Title extends React.Component {
       return (
         <div className='title-div'>
         	<h1 className='title'>Microwave Converter</h1>
-        	<h3>Find correct cooking times for your own microwave</h3>
+{/*        	<h3>Find correct cooking times for your own microwave</h3>  */}
           <a onClick={this.toggle}>
     			{link}
           </a>
