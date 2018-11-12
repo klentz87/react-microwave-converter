@@ -114,7 +114,7 @@ class App extends Component {
 
                     <Row className="my-5 white-text">
 
-                      <Col md="7" xs="8">
+                      <Col md="7" xs="12">
                         <Power 
                           value={this.state.originalPower}
                           onChange={this.handleChange}

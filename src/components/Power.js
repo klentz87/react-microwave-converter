@@ -6,14 +6,10 @@ import PropTypes from "prop-types";
 class Power extends Component {
   render() {
     const { value, onChange, id, children, isValid } = this.props;
-//  let header;
-
-//  (id == "originalPower") ? header = "On the Package" : header = "Your Microwave" 
 
     return (
 
       <div>
-{/*       <h5>{header}</h5>   */}
         <label>
           {children}
         </label>  

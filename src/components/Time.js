@@ -20,7 +20,7 @@ function Time({ minutes, seconds, onChange, isMinutesValid, isSecondsValid }) {
       <label>Enter time specified on back of package</label>
 	      <div>
 	      	<Row>
-		      <div className="input-group col-sm-6 mb-2">  
+		      <div className="d-flex justify-content-sm-center input-group col-sm-6 mb-2">  
 		      	<input id="minutes" type="text" onChange={onChange} value={minutes} className="form-control"></input>
 		      	<div className="input-group-append">
 					<span className="input-group-text" id="basic-addon2">minutes</span>
