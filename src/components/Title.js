@@ -14,14 +14,14 @@ class Title extends React.Component {
   }
  
   render() {
-  	  const link = this.state.collapse ? "less info" : "more info"
+      const link = this.state.collapse ? "less info" : "more info"
 
       return (
         <div className='title-div'>
-        	<h1 className='title'>Microwave Converter</h1>
-{/*        	<h3>Find correct cooking times for your own microwave</h3>  */}
+          <h1 className='title'>Microwave Converter</h1>
+            <h3>Find correct cooking times for your own microwave</h3>
           <a onClick={this.toggle}>
-    			{link}
+          {link}
           </a>
           <Collapse isOpen={this.state.collapse}>
             <div>

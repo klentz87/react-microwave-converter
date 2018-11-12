@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from "react-router-dom";
-import "../css/App.css"
 import Button from './Button.js';
 import Display from './Display.js';
 import Power from './Power.js';
@@ -8,8 +6,9 @@ import Time from './Time.js';
 import Title from './Title.js';
 import NavigationBar from './NavigationBar';
 import FooterPage from "./FooterPage";
+import "../css/App.css"
 import { Container } from 'mdbreact';
-import { Mask, Row, Col, View } from "mdbreact";
+import { Row, Col } from "mdbreact";
 
 const converter = require('../utils/converter.js').converter
 const convertToSeconds = require('../utils/convertToSeconds').convertToSeconds
@@ -103,9 +102,7 @@ class App extends Component {
   render() {
     return (
         <div>
-          <div id="intro">         
-            <View>              
-              <Mask className="text-white gradient">
+          <div id="navbar-and-content" className="text-white">
 
                 <NavigationBar />
                 
@@ -115,9 +112,9 @@ class App extends Component {
                 
                     <Title />  
 
-                    <Row className="mt-5 white-text">
+                    <Row className="my-5 white-text">
 
-                      <Col md="7" xs="12">
+                      <Col md="7" xs="8">
                         <Power 
                           value={this.state.originalPower}
                           onChange={this.handleChange}
@@ -160,9 +157,7 @@ class App extends Component {
                     </Row>  
                   </Container>  
                 </div>  
-              </Mask>
 
-            </View>
           </div>
 
           <FooterPage/>

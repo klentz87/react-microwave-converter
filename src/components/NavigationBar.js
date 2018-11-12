@@ -4,12 +4,10 @@ import {
   Navbar,
   NavbarToggler,
   NavbarBrand,
-  Nav,
+  NavbarNav,
   NavItem,
-  NavLink
 } from 'mdbreact'; 
 import "../css/NavigationBar.css";
-import{ BrowserRouter } from "react-router-dom"
 
 class NavigationBar extends React.Component {
 	constructor(props) {
@@ -30,18 +28,18 @@ class NavigationBar extends React.Component {
 	render() {
 		return (
 				<div className="navigation-bar overlay">
-					<Navbar dark expand="md">
+					<Navbar dark expand="md" fixed="top" scrolling>
 						<NavbarBrand className="brand" style={{cursor:"default"}}>Microwave Converter</NavbarBrand>
 						<NavbarToggler onClick={this.toggle} />
 						<Collapse isOpen={this.state.isOpen} navbar>
-							<Nav className="ml-auto" navbar>
+							<NavbarNav right className="">
 								<NavItem className="ml-5">
 									<a href="http://www.krislentz.net">Portfolio Page</a>
 								</NavItem>
 								<NavItem className="ml-5">
 									<a href="https://github.com/klentz87">Github Profile</a>
 								</NavItem>
-							</Nav>
+							</NavbarNav>
 						</Collapse>
 					</Navbar>
 				</div>

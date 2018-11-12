@@ -3,9 +3,23 @@
     background-image: none;
 }
 
+.navigation-bar .navbar {
+  transition: background .2s ease-in-out,padding .2s ease-in-out;
+}
+
+.navigation-bar .top-nav-collapse {
+  background: rgb(27, 6, 54) !important;
+}
+
 .brand {
 	font-size: 1.5rem;
 	font-style: bold;
+}
+
+@media (max-width: 768px) {
+	.navigation-bar .navbar:not(.top-nav-collapse) {
+  		background: rgb(27, 6, 54) !important;
+	}	
 }
 
 @media screen and (max-width: 576px) {

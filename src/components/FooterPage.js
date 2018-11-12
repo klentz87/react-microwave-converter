@@ -8,7 +8,6 @@ function FooterPage() {
 		  <Container fluid className="text-center text-md-left">
 		    <Row>
 		      <Col md="6">
-		      	<h5 className="title">Footer Content</h5>
 		      	<p>
 		        	For more information about other project I've done, check out the following links.
 		      	</p>
@@ -21,10 +20,13 @@ function FooterPage() {
 		          		<a href="http://www.krislentz.net">Home</a>
 		        	</li>
 		        	<li className="list-unstyled">
-		          		<a href="#">React Contact List</a>
+		          		<a href="https://kris-react-contact-list.herokuapp.com/">React Contact List</a>
 		        	</li>
 		        	<li className="list-unstyled">
 		          		<a href="#!">React Book Cataloger</a>
+		        	</li>
+		       		<li className="list-unstyled">
+		          		<a href="https://rock-paper-scissors-for-react.herokuapp.com/">Rock, Paper, Scissors</a>
 		        	</li>
 		      	</ul>
 		      </Col>
@@ -45,7 +47,8 @@ function FooterPage() {
 		 
 		  <div className="footer-copyright text-center py-4">
 		    <Container fluid>
-	
+		      	&copy; {new Date().getFullYear()} Copyright:{" "}
+      			<a href="https://www.krislentz.net"> Kris Lentz </a>
 		    </Container>
 		  </div>
 		</div>
