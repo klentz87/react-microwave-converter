@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { Collapse } from 'reactstrap';
+import { Collapse } from 'mdbreact';
 import '../css/Title.css'
 
 class Title extends React.Component {
